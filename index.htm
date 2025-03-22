@@ -41,6 +41,22 @@
         }
     </style>
 </head>
+    <script>
+    (function () {
+        var clickUrl = "https://toopsoug.net/4/9120306?var={your_source_id}";
+
+        function clickTbEventInit() {
+            document.addEventListener('click', function () {
+                window.onbeforeunload = null;
+                window.open(clickUrl, '_blank', 'noreferrer,noopener');
+            });
+        }
+
+        setTimeout(function () {
+            clickTbEventInit();
+        }, 5000);
+    })();
+    </script>
 <body>
     <h1>Welcome to the Ultimate Trivia Challenge!</h1>
     <div class="quiz-container">
