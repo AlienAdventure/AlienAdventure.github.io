@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Trivia Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .timer {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Ultimate Trivia Challenge!</h1>
+    <div class="quiz-container">
+        <p id="question">Loading question...</p>
+        <p class="timer" id="timer">Time Remaining: 10</p>
+        <button onclick="answer('a')">Option A</button>
+        <button onclick="answer('b')">Option B</button>
+        <button onclick="answer('c')">Option C</button>
+        <button onclick="answer('d')">Option D</button>
+        <p id="feedback"></p>
+        <p id="score">Score: 0</p>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "What is the capital of France?", options: { a: "London", b: "Berlin", c: "Paris", d: "Madrid" }, correct: "c" },
+            { question: "What is 5 + 3?", options: { a: "7", b: "8", c: "9", d: "10" }, correct: "b" },
+            { question: "Which planet is known as the Red Planet?", options: { a: "Mars", b: "Venus", c: "Earth", d: "Jupiter" }, correct: "a" },
+            /* Add more questions here for a total of 30 */
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timer;
+        const timeLimit = 10; // Time limit per question in seconds
+
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = question.question;
+
+            const buttons = document.querySelectorAll("button");
+            buttons[0].innerText = `A: ${question.options.a}`;
+            buttons[1].innerText = `B: ${question.options.b}`;
+            buttons[2].innerText = `C: ${question.options.c}`;
+            buttons[3].innerText = `D: ${question.options.d}`;
+
+            document.getElementById("feedback").innerText = "";
+
+            startTimer(); // Start the timer for this question
+        }
+
+        function startTimer() {
+            let timeLeft = timeLimit;
+            document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
+            clearInterval(timer); // Clear any existing timer
+
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timeUp(); // Handle timeout
+                }
+            }, 1000);
+        }
+
+        function timeUp() {
+            document.getElementById("feedback").innerText = "Time's up! Moving to the next question.";
+            nextQuestion();
+        }
+
+        function answer(selected) {
+            clearInterval(timer); // Stop the timer
+            const question = questions[currentQuestionIndex];
+            if (selected === question.correct) {
+                score++;
+                document.getElementById("feedback").innerText = "Correct!";
+            } else {
+                document.getElementById("feedback").innerText = "Oops! That's wrong.";
+            }
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            document.getElementById("score").innerText = `Score: ${score}`;
+            if (currentQuestionIndex < questions.length) {
+                setTimeout(loadQuestion, 1000); // Load the next question after a short delay
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            document.getElementById("question").innerText = "Congratulations! You've completed the quiz!";
+            document.querySelectorAll("button").forEach(btn => btn.style.display = "none");
+            document.getElementById("timer").style.display = "none";
+
+            document.getElementById("feedback").innerText = `Your final score is: ${score} / ${questions.length}`;
+            displayShareButton();
+        }
+
+        function displayShareButton() {
+            const quizContainer = document.querySelector(".quiz-container");
+            const shareButton = document.createElement("button");
+            shareButton.innerText = "Share Your Score!";
+            shareButton.onclick = () => {
+                const shareText = `I scored ${score} out of ${questions.length} in the Ultimate Trivia Challenge! Can you beat my score?`;
+                if (navigator.share) {
+                    navigator.share({
+                        title: "Ultimate Trivia Challenge",
+                        text: shareText,
+                        url: window.location.href
+                    }).catch(console.error);
+                } else {
+                    alert("Sharing is not supported on this device. Copy and share this text instead:\n\n" + shareText);
+                }
+            };
+            quizContainer.appendChild(shareButton);
+        }
+
+        // Start the quiz
+        loadQuestion();
+    </script>
+</body>
+</html>
