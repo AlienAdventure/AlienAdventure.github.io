@@ -56,10 +56,36 @@
 
     <script>
         const questions = [
-            { question: "What is the capital of France?", options: { a: "London", b: "Berlin", c: "Paris", d: "Madrid" }, correct: "c" },
-            { question: "What is 5 + 3?", options: { a: "7", b: "8", c: "9", d: "10" }, correct: "b" },
-            { question: "Which planet is known as the Red Planet?", options: { a: "Mars", b: "Venus", c: "Earth", d: "Jupiter" }, correct: "a" },
-            /* Add more questions here for a total of 30 */
+            { question: "What color is the sky?", options: { a: "Green", b: "Blue", c: "Red", d: "Yellow" }, correct: "b" },
+            { question: "How many legs do most dogs have?", options: { a: "2", b: "3", c: "4", d: "5" }, correct: "c" },
+            { question: "What fruit is yellow and curved?", options: { a: "Banana", b: "Apple", c: "Grape", d: "Lemon" }, correct: "a" },
+            { question: "What sound does a cat make?", options: { a: "Meow", b: "Woof", c: "Oink", d: "Quack" }, correct: "a" },
+            { question: "What do cows drink?", options: { a: "Milk", b: "Water", c: "Juice", d: "Soda" }, correct: "b" },
+            { question: "Which is bigger: the sun or the moon?", options: { a: "Sun", b: "Moon", c: "Same size", d: "Neither" }, correct: "a" },
+            { question: "What number comes after 9?", options: { a: "8", b: "10", c: "11", d: "12" }, correct: "b" },
+            { question: "Which shape has 3 sides?", options: { a: "Square", b: "Triangle", c: "Circle", d: "Hexagon" }, correct: "b" },
+            { question: "What is frozen water called?", options: { a: "Steam", b: "Ice", c: "Salt", d: "Snow" }, correct: "b" },
+            { question: "What planet do we live on?", options: { a: "Mars", b: "Earth", c: "Venus", d: "Jupiter" }, correct: "b" },
+            { question: "What do bees make?", options: { a: "Milk", b: "Honey", c: "Sugar", d: "Jam" }, correct: "b" },
+            { question: "What color is grass?", options: { a: "Green", b: "Blue", c: "Red", d: "Pink" }, correct: "a" },
+            { question: "What do you use to cut paper?", options: { a: "Scissors", b: "Fork", c: "Pencil", d: "Eraser" }, correct: "a" },
+            { question: "Which animal barks?", options: { a: "Dog", b: "Cat", c: "Fish", d: "Duck" }, correct: "a" },
+            { question: "What do you wear on your feet?", options: { a: "Hat", b: "Shoes", c: "Gloves", d: "Scarf" }, correct: "b" },
+            { question: "What do fish live in?", options: { a: "Air", b: "Water", c: "Sand", d: "Grass" }, correct: "b" },
+            { question: "What color are ripe strawberries?", options: { a: "Red", b: "Green", c: "Yellow", d: "Purple" }, correct: "a" },
+            { question: "What shape is a basketball?", options: { a: "Square", b: "Circle", c: "Triangle", d: "Oval" }, correct: "b" },
+            { question: "Which season is the coldest?", options: { a: "Summer", b: "Winter", c: "Spring", d: "Autumn" }, correct: "b" },
+            { question: "What do you put in a toaster?", options: { a: "Bread", b: "Ice", c: "Milk", d: "Paper" }, correct: "a" },
+            { question: "How many days are in a week?", options: { a: "5", b: "6", c: "7", d: "8" }, correct: "c" },
+            { question: "What color is an orange?", options: { a: "Blue", b: "Green", c: "Orange", d: "Red" }, correct: "c" },
+            { question: "What animal says 'Quack'?", options: { a: "Cow", b: "Horse", c: "Duck", d: "Frog" }, correct: "c" },
+            { question: "What color are bananas?", options: { a: "Red", b: "Yellow", c: "Purple", d: "Blue" }, correct: "b" },
+            { question: "How many wheels does a car have?", options: { a: "3", b: "4", c: "5", d: "6" }, correct: "b" },
+            { question: "What do you tie your shoes with?", options: { a: "Ribbon", b: "Laces", c: "Rubber Band", d: "Tape" }, correct: "b" },
+            { question: "Which is a fruit?", options: { a: "Carrot", b: "Apple", c: "Potato", d: "Onion" }, correct: "b" },
+            { question: "Which is bigger: an elephant or a mouse?", options: { a: "Mouse", b: "Elephant", c: "Same size", d: "None" }, correct: "b" },
+            { question: "Which do you eat: pizza or rocks?", options: { a: "Pizza", b: "Rocks", c: "Both", d: "Neither" }, correct: "a" },
+            { question: "What color is the sun?", options: { a: "Yellow", b: "Blue", c: "Green", d: "Purple" }, correct: "a" },
         ];
 
         let currentQuestionIndex = 0;
@@ -85,21 +111,21 @@
         function startTimer() {
             let timeLeft = timeLimit;
             document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
-            clearInterval(timer); // Clear any existing timer
+            clearInterval(timer);
 
             timer = setInterval(() => {
                 timeLeft--;
                 document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
                 if (timeLeft <= 0) {
                     clearInterval(timer);
-                    timeUp(); // Handle timeout
+                    timeUp();
                 }
             }, 1000);
         }
 
-        function timeUp() {
+                function timeUp() {
             document.getElementById("feedback").innerText = "Time's up! Moving to the next question.";
-            nextQuestion();
+            nextQuestion(); // Automatically move to the next question
         }
 
         function answer(selected) {
@@ -111,7 +137,7 @@
             } else {
                 document.getElementById("feedback").innerText = "Oops! That's wrong.";
             }
-            nextQuestion();
+            nextQuestion(); // Move to the next question
         }
 
         function nextQuestion() {
@@ -120,17 +146,17 @@
             if (currentQuestionIndex < questions.length) {
                 setTimeout(loadQuestion, 1000); // Load the next question after a short delay
             } else {
-                endGame();
+                endGame(); // End the quiz if all questions are answered
             }
         }
 
         function endGame() {
             document.getElementById("question").innerText = "Congratulations! You've completed the quiz!";
-            document.querySelectorAll("button").forEach(btn => btn.style.display = "none");
-            document.getElementById("timer").style.display = "none";
+            document.querySelectorAll("button").forEach(btn => btn.style.display = "none"); // Hide answer buttons
+            document.getElementById("timer").style.display = "none"; // Hide the timer
 
             document.getElementById("feedback").innerText = `Your final score is: ${score} / ${questions.length}`;
-            displayShareButton();
+            displayShareButton(); // Display the share score button
         }
 
         function displayShareButton() {
@@ -149,7 +175,7 @@
                     alert("Sharing is not supported on this device. Copy and share this text instead:\n\n" + shareText);
                 }
             };
-            quizContainer.appendChild(shareButton);
+            quizContainer.appendChild(shareButton); // Add the share button to the page
         }
 
         // Start the quiz
@@ -157,3 +183,4 @@
     </script>
 </body>
 </html>
+
