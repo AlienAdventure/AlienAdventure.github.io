@@ -1,188 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Trivia Challenge</title>
+    <title>Challenging Quiz Game</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f8ff;
-            color: #333;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
         }
-        .quiz-container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+        header {
             background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: calc(100vh - 120px); /* Account for header/footer height */
+        }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .quiz-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
             color: #fff;
+            background-color: #007bff;
             border: none;
             border-radius: 5px;
+            margin: 10px 0;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         .timer {
+            color: #d9534f;
             font-size: 18px;
             margin: 10px 0;
-            font-weight: bold;
-            color: #d9534f;
+        }
+
+        /* Banner Ad Areas */
+        .ad-banner {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #e8e8e8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #555;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Ultimate Trivia Challenge!</h1>
-    <div class="quiz-container">
-        <p id="question">Loading question...</p>
-        <p class="timer" id="timer">Time Remaining: 10</p>
-        <button onclick="answer('a')">Option A</button>
-        <button onclick="answer('b')">Option B</button>
-        <button onclick="answer('c')">Option C</button>
-        <button onclick="answer('d')">Option D</button>
-        <p id="feedback"></p>
-        <p id="score">Score: 0</p>
+    <header>
+        <h1>Challenging Quiz Game</h1>
+    </header>
+
+    <div class="container">
+        <!-- Banner Ad at the top -->
+        <div class="ad-banner">Your Banner Ad Here (728x90)</div>
+
+        <div class="quiz-container">
+            <div id="question-container">
+                <p class="quiz-header" id="question">Loading question...</p>
+                <p class="timer" id="timer">Time Remaining: 10</p>
+                <div id="options"></div>
+                <p id="feedback"></p>
+                <p id="score">Score: 0</p>
+                <button onclick="shareScore()">Share My Score!</button>
+            </div>
+        </div>
+
+        <!-- Banner Ad at the bottom -->
+        <div class="ad-banner">Your Banner Ad Here (300x250)</div>
     </div>
 
-    
+    <footer>
+        <p>&copy; 2025 Challenging Quiz Game. All rights reserved.</p>
+    </footer>
+
     <script>
         const questions = [
-            { question: "What color is the sky?", options: { a: "Green", b: "Blue", c: "Red", d: "Yellow" }, correct: "b" },
-            { question: "How many legs do most dogs have?", options: { a: "2", b: "3", c: "4", d: "5" }, correct: "c" },
-            { question: "What fruit is yellow and curved?", options: { a: "Banana", b: "Apple", c: "Grape", d: "Lemon" }, correct: "a" },
-            { question: "What sound does a cat make?", options: { a: "Meow", b: "Woof", c: "Oink", d: "Quack" }, correct: "a" },
-            { question: "What do cows drink?", options: { a: "Milk", b: "Water", c: "Juice", d: "Soda" }, correct: "b" },
-            { question: "Which is bigger: the sun or the moon?", options: { a: "Sun", b: "Moon", c: "Same size", d: "Neither" }, correct: "a" },
-            { question: "What number comes after 9?", options: { a: "8", b: "10", c: "11", d: "12" }, correct: "b" },
-            { question: "Which shape has 3 sides?", options: { a: "Square", b: "Triangle", c: "Circle", d: "Hexagon" }, correct: "b" },
-            { question: "What is frozen water called?", options: { a: "Steam", b: "Ice", c: "Salt", d: "Snow" }, correct: "b" },
-            { question: "What planet do we live on?", options: { a: "Mars", b: "Earth", c: "Venus", d: "Jupiter" }, correct: "b" },
-            { question: "What do bees make?", options: { a: "Milk", b: "Honey", c: "Sugar", d: "Jam" }, correct: "b" },
-            { question: "What color is grass?", options: { a: "Green", b: "Blue", c: "Red", d: "Pink" }, correct: "a" },
-            { question: "What do you use to cut paper?", options: { a: "Scissors", b: "Fork", c: "Pencil", d: "Eraser" }, correct: "a" },
-            { question: "Which animal barks?", options: { a: "Dog", b: "Cat", c: "Fish", d: "Duck" }, correct: "a" },
-            { question: "What do you wear on your feet?", options: { a: "Hat", b: "Shoes", c: "Gloves", d: "Scarf" }, correct: "b" },
-            { question: "What do fish live in?", options: { a: "Air", b: "Water", c: "Sand", d: "Grass" }, correct: "b" },
-            { question: "What color are ripe strawberries?", options: { a: "Red", b: "Green", c: "Yellow", d: "Purple" }, correct: "a" },
-            { question: "What shape is a basketball?", options: { a: "Square", b: "Circle", c: "Triangle", d: "Oval" }, correct: "b" },
-            { question: "Which season is the coldest?", options: { a: "Summer", b: "Winter", c: "Spring", d: "Autumn" }, correct: "b" },
-            { question: "What do you put in a toaster?", options: { a: "Bread", b: "Ice", c: "Milk", d: "Paper" }, correct: "a" },
-            { question: "How many days are in a week?", options: { a: "5", b: "6", c: "7", d: "8" }, correct: "c" },
-            { question: "What color is an orange?", options: { a: "Blue", b: "Green", c: "Orange", d: "Red" }, correct: "c" },
-            { question: "What animal says 'Quack'?", options: { a: "Cow", b: "Horse", c: "Duck", d: "Frog" }, correct: "c" },
-            { question: "What color are bananas?", options: { a: "Red", b: "Yellow", c: "Purple", d: "Blue" }, correct: "b" },
-            { question: "How many wheels does a car have?", options: { a: "3", b: "4", c: "5", d: "6" }, correct: "b" },
-            { question: "What do you tie your shoes with?", options: { a: "Ribbon", b: "Laces", c: "Rubber Band", d: "Tape" }, correct: "b" },
-            { question: "Which is a fruit?", options: { a: "Carrot", b: "Apple", c: "Potato", d: "Onion" }, correct: "b" },
-            { question: "Which is bigger: an elephant or a mouse?", options: { a: "Mouse", b: "Elephant", c: "Same size", d: "None" }, correct: "b" },
-            { question: "Which do you eat: pizza or rocks?", options: { a: "Pizza", b: "Rocks", c: "Both", d: "Neither" }, correct: "a" },
-            { question: "What color is the sun?", options: { a: "Yellow", b: "Blue", c: "Green", d: "Purple" }, correct: "a" },
+            { question: "What is 12 + 15?", options: ["27", "25", "30", "24"], correct: "27" },
+            { question: "Which planet has the most moons?", options: ["Jupiter", "Saturn", "Mars", "Earth"], correct: "Saturn" },
+            { question: "What is the capital of Australia?", options: ["Canberra", "Sydney", "Melbourne", "Brisbane"], correct: "Canberra" },
+            { question: "Who painted the Mona Lisa?", options: ["Leonardo da Vinci", "Michelangelo", "Vincent van Gogh", "Pablo Picasso"], correct: "Leonardo da Vinci" },
+            { question: "What is the largest mammal?", options: ["Blue Whale", "Elephant", "Giraffe", "Polar Bear"], correct: "Blue Whale" },
         ];
 
-        let currentQuestionIndex = 0;
         let score = 0;
-        let timer;
-        const timeLimit = 10; // Time limit per question in seconds
+        let timeLeft = 10;
+        let currentQuestionIndex = 0;
+        let timerInterval;
+
+        function startGame() {
+            questions.sort(() => Math.random() - 0.5); // Randomize questions
+            loadQuestion();
+        }
 
         function loadQuestion() {
-            const question = questions[currentQuestionIndex];
-            document.getElementById("question").innerText = question.question;
+            clearInterval(timerInterval);
+            timeLeft = 10; // Reset timer for each question
+            document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
 
-            const buttons = document.querySelectorAll("button");
-            buttons[0].innerText = `A: ${question.options.a}`;
-            buttons[1].innerText = `B: ${question.options.b}`;
-            buttons[2].innerText = `C: ${question.options.c}`;
-            buttons[3].innerText = `D: ${question.options.d}`;
+            const currentQuestion = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = currentQuestion.question;
 
-            document.getElementById("feedback").innerText = "";
+            const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5); // Shuffle options
+            const optionsContainer = document.getElementById("options");
+            optionsContainer.innerHTML = ""; // Clear previous options
 
-            startTimer(); // Start the timer for this question
+            shuffledOptions.forEach(option => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.onclick = () => answer(option);
+                optionsContainer.appendChild(button);
+            });
+
+            startTimer();
         }
 
         function startTimer() {
-            let timeLeft = timeLimit;
-            document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
-            clearInterval(timer);
-
-            timer = setInterval(() => {
+            timerInterval = setInterval(() => {
                 timeLeft--;
                 document.getElementById("timer").innerText = `Time Remaining: ${timeLeft}`;
                 if (timeLeft <= 0) {
-                    clearInterval(timer);
+                    clearInterval(timerInterval);
                     timeUp();
                 }
             }, 1000);
         }
 
-                function timeUp() {
+        function timeUp() {
             document.getElementById("feedback").innerText = "Time's up! Moving to the next question.";
-            nextQuestion(); // Automatically move to the next question
+            nextQuestion();
         }
 
         function answer(selected) {
-            clearInterval(timer); // Stop the timer
-            const question = questions[currentQuestionIndex];
-            if (selected === question.correct) {
+            clearInterval(timerInterval);
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selected === currentQuestion.correct) {
                 score++;
                 document.getElementById("feedback").innerText = "Correct!";
             } else {
-                document.getElementById("feedback").innerText = "Oops! That's wrong.";
+                document.getElementById("feedback").innerText = `Wrong! The correct answer was: ${currentQuestion.correct}`;
             }
-            nextQuestion(); // Move to the next question
+            document.getElementById("score").innerText = `Score: ${score}`;
+            nextQuestion();
         }
 
         function nextQuestion() {
             currentQuestionIndex++;
-            document.getElementById("score").innerText = `Score: ${score}`;
             if (currentQuestionIndex < questions.length) {
-                setTimeout(loadQuestion, 1000); // Load the next question after a short delay
+                setTimeout(() => {
+                    document.getElementById("feedback").innerText = "";
+                    loadQuestion();
+                }, 1000);
             } else {
-                endGame(); // End the quiz if all questions are answered
+                endGame();
             }
         }
 
         function endGame() {
-            document.getElementById("question").innerText = "Congratulations! You've completed the quiz!";
-            document.querySelectorAll("button").forEach(btn => btn.style.display = "none"); // Hide answer buttons
-            document.getElementById("timer").style.display = "none"; // Hide the timer
-
-            document.getElementById("feedback").innerText = `Your final score is: ${score} / ${questions.length}`;
-            displayShareButton(); // Display the share score button
+            document.querySelector(".quiz-container").innerHTML = `
+                <h2>Game Over!</h2>
+                <p>Your final score is: ${score} / ${questions.length}</p>
+                <button onclick="restartGame()">Restart Game</button>
+                <button onclick="shareScore()">Share My Score!</button>
+            `;
         }
 
-        function displayShareButton() {
-            const quizContainer = document.querySelector(".quiz-container");
-            const shareButton = document.createElement("button");
-            shareButton.innerText = "Share Your Score!";
-            shareButton.onclick = () => {
-                const shareText = `I scored ${score} out of ${questions.length} in the Ultimate Trivia Challenge! Can you beat my score?`;
-                if (navigator.share) {
-                    navigator.share({
-                        title: "Ultimate Trivia Challenge",
-                        text: shareText,
-                        url: window.location.href
-                    }).catch(console.error);
-                } else {
-                    alert("Sharing is not supported on this device. Copy and share this text instead:\n\n" + shareText);
-                }
-            };
-            quizContainer.appendChild(shareButton); // Add the share button to the page
+        function restartGame() {
+            score = 0;
+            currentQuestionIndex = 0;
+            document.getElementById("score").innerText = `Score: 0`;
+            startGame();
         }
 
-        // Start the quiz
-        loadQuestion();
+        // Share Score Feature
+        function shareScore() {
+            const shareText = `I scored ${score} out of ${questions.length} in the Challenging Quiz Game! Can you beat my score?`;
 
+            if (navigator.share) {
+                navigator.share({
+                    title: "Challenging Quiz Game",
+                    text: shareText,
+                    url: window.location.href
+                }).catch(err => console.error("Sharing failed", err));
+            } else {
+                alert("Sharing is not supported on this device. Copy and share this text instead:\n\n" + shareText);
+            }
+        }
+
+        // Start the game
+        startGame();
+    </script>
 </body>
 </html>
-
