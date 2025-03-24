@@ -122,6 +122,31 @@
             { question: "What is the capital of Australia?", options: ["Canberra", "Sydney", "Melbourne", "Brisbane"], correct: "Canberra" },
             { question: "Who painted the Mona Lisa?", options: ["Leonardo da Vinci", "Michelangelo", "Vincent van Gogh", "Pablo Picasso"], correct: "Leonardo da Vinci" },
             { question: "What is the largest mammal?", options: ["Blue Whale", "Elephant", "Giraffe", "Polar Bear"], correct: "Blue Whale" },
+            { question: "What is the capital of Japan?", options: ["Tokyo", "Kyoto", "Osaka", "Nagoya"], correct: "Tokyo" },
+            { question: "What is the boiling point of water?", options: ["100°C", "90°C", "80°C", "110°C"], correct: "100°C" },
+            { question: "Who wrote 'Romeo and Juliet'?", options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"], correct: "William Shakespeare" },
+            { question: "How many continents are there?", options: ["7", "6", "5", "8"], correct: "7" },
+            { question: "Which gas do plants absorb?", options: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Helium"], correct: "Carbon Dioxide" },
+            { question: "What is the capital of France?", options: ["Paris", "Marseille", "Lyon", "Nice"], correct: "Paris" },
+            { question: "Which element has the chemical symbol 'O'?", options: ["Oxygen", "Osmium", "Gold", "Silver"], correct: "Oxygen" },
+            { question: "What is 3 x 7?", options: ["21", "24", "18", "27"], correct: "21" },
+            { question: "Which ocean is the largest?", options: ["Pacific", "Atlantic", "Indian", "Arctic"], correct: "Pacific" },
+            { question: "What is the main language spoken in Brazil?", options: ["Portuguese", "Spanish", "English", "French"], correct: "Portuguese" },
+            { question: "What year did World War II end?", options: ["1945", "1940", "1939", "1950"], correct: "1945" },
+            { question: "Which country invented pizza?", options: ["Italy", "France", "USA", "China"], correct: "Italy" },
+            { question: "Who discovered gravity?", options: ["Isaac Newton", "Albert Einstein", "Galileo", "Aristotle"], correct: "Isaac Newton" },
+            { question: "Which planet is known as the Red Planet?", options: ["Mars", "Venus", "Mercury", "Jupiter"], correct: "Mars" },
+            { question: "What is the capital of Canada?", options: ["Ottawa", "Toronto", "Montreal", "Vancouver"], correct: "Ottawa" },
+            { question: "What is the smallest prime number?", options: ["2", "1", "3", "5"], correct: "2" },
+            { question: "Which country has the most people?", options: ["China", "India", "USA", "Brazil"], correct: "China" },
+            { question: "What is the capital of Germany?", options: ["Berlin", "Munich", "Frankfurt", "Hamburg"], correct: "Berlin" },
+            { question: "How many bones are in the human body?", options: ["206", "201", "210", "215"], correct: "206" },
+            { question: "What is the freezing point of water?", options: ["0°C", "10°C", "-5°C", "5°C"], correct: "0°C" },
+            { question: "Who painted 'Starry Night'?", options: ["Vincent van Gogh", "Claude Monet", "Pablo Picasso", "Salvador Dali"], correct: "Vincent van Gogh" },
+            { question: "What is the largest organ in the human body?", options: ["Skin", "Heart", "Liver", "Lungs"], correct: "Skin" },
+            { question: "What is 9 x 9?", options: ["81", "72", "64", "90"], correct: "81" },
+            { question: "What is the chemical formula for water?", options: ["H2O", "O2", "CO2", "NaCl"], correct: "H2O" },
+            { question: "Which animal is known as the King of the Jungle?", options: ["Lion", "Tiger", "Elephant", "Giraffe"], correct: "Lion" }
         ];
 
         let score = 0;
@@ -142,7 +167,7 @@
             const currentQuestion = questions[currentQuestionIndex];
             document.getElementById("question").innerText = currentQuestion.question;
 
-            const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5); // Shuffle options
+                        const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5); // Shuffle options
             const optionsContainer = document.getElementById("options");
             optionsContainer.innerHTML = ""; // Clear previous options
 
@@ -207,13 +232,12 @@
         }
 
         function restartGame() {
-            score = 0;
-            currentQuestionIndex = 0;
-            document.getElementById("score").innerText = `Score: 0`;
-            startGame();
+            score = 0; // Reset score
+            currentQuestionIndex = 0; // Reset question index
+            document.getElementById("score").innerText = `Score: 0`; // Update score display
+            startGame(); // Restart the game
         }
 
-        // Share Score Feature
         function shareScore() {
             const shareText = `I scored ${score} out of ${questions.length} in the Challenging Quiz Game! Can you beat my score?`;
 
