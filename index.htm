@@ -31,15 +31,18 @@
             width: 100%;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 900px;
-            width: 100%;
+        /* Main Layout */
+        .layout {
+            display: flex;
+            max-width: 1200px;
             margin: 20px auto;
+            width: 100%;
             padding: 10px;
         }
 
+        /* Quiz Section */
         .quiz-container {
+            flex: 2;
             background: #ffffff;
             padding: 20px;
             border-radius: 10px;
@@ -51,6 +54,19 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        /* Side Banner Section */
+        .side-banner {
+            flex: 1;
+            margin-left: 20px;
+            text-align: center;
+            padding: 10px;
+            background-color: #e8e8e8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #555;
+            font-size: 14px;
         }
 
         button {
@@ -87,6 +103,17 @@
             color: #555;
             font-size: 14px;
         }
+
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+                align-items: center;
+            }
+            .side-banner {
+                margin: 20px 0 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -97,7 +124,7 @@
     <!-- Top Banner -->
     <div class="ad-banner">Your Top Banner Ad Here (728x90)</div>
 
-    <div class="container">
+    <div class="layout">
         <div class="quiz-container">
             <div id="question-container">
                 <p class="quiz-header" id="question">Loading question...</p>
@@ -108,6 +135,9 @@
                 <button onclick="shareScore()">Share My Score!</button>
             </div>
         </div>
+
+        <!-- Side Banner -->
+        <div class="side-banner">Your Side Banner Ad Here (300x600)</div>
     </div>
 
     <!-- Bottom Banner -->
@@ -169,7 +199,7 @@
             const currentQuestion = questions[currentQuestionIndex];
             document.getElementById("question").innerText = currentQuestion.question;
 
-                        const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5); // Shuffle options
+            const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5); // Shuffle options
             const optionsContainer = document.getElementById("options");
             optionsContainer.innerHTML = ""; // Clear previous options
 
