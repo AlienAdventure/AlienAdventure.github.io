@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenging Quiz Game</title>
@@ -12,33 +11,35 @@
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         header {
             background-color: #007bff;
             color: white;
             padding: 10px;
             text-align: center;
+            width: 100%;
         }
         footer {
             background-color: #333;
             color: white;
             text-align: center;
             padding: 10px 0;
+            margin-top: 20px;
+            width: 100%;
         }
 
         /* Main Container */
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            min-height: calc(100vh - 120px); /* Account for header/footer height */
+            max-width: 900px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 10px;
         }
 
         .quiz-container {
-            width: 100%;
-            max-width: 600px;
             background: #ffffff;
             padding: 20px;
             border-radius: 10px;
@@ -75,7 +76,7 @@
             margin: 10px 0;
         }
 
-        /* Banner Ad Areas */
+        /* Top and Bottom Banner Styles */
         .ad-banner {
             text-align: center;
             margin: 20px 0;
@@ -93,17 +94,10 @@
         <h1>Challenging Quiz Game</h1>
     </header>
 
-    <div class="container">
-        <!-- Banner Ad at the top -->
-        <div class="ad-banner"> <div>
-    <script type="text/javascript">
-        aclib.runBanner({
-            zoneId: '9734874',
-        });
-    </script>
-</div>
-<div>
+    <!-- Top Banner -->
+    <div class="ad-banner">Your Top Banner Ad Here (728x90)</div>
 
+    <div class="container">
         <div class="quiz-container">
             <div id="question-container">
                 <p class="quiz-header" id="question">Loading question...</p>
@@ -114,16 +108,11 @@
                 <button onclick="shareScore()">Share My Score!</button>
             </div>
         </div>
+    </div>
 
-        <!-- Banner Ad at the bottom -->
-        <div class="ad-banner"> <div>
-    <script type="text/javascript">
-        aclib.runBanner({
-            zoneId: '9734890',
-        });
-    </script>
-</div>
-</div>
+    <!-- Bottom Banner -->
+    <div class="ad-banner">Your Bottom Banner Ad Here (728x90)</div>
+
     <footer>
         <p>&copy; 2025 Challenging Quiz Game. All rights reserved.</p>
     </footer>
