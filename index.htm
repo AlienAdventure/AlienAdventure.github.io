@@ -18,23 +18,23 @@
             padding: 30px 15px;
         }
         header img {
-            max-width: 150px;
+            max-width: 180px;
             margin-bottom: 15px;
-            border-radius: 10px;
         }
         header h1 {
             margin: 0;
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: #ffea00;
-            text-shadow: 2px 2px 4px #000;
+            text-shadow: 3px 3px 6px #000;
         }
         header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-top: 10px;
+            color: #d4d4ff;
         }
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 20px;
         }
         .section {
@@ -42,44 +42,79 @@
             margin-bottom: 50px;
         }
         .section h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #ffea00;
-            text-shadow: 2px 2px 3px #000;
+            text-shadow: 2px 2px 4px #000;
         }
         .section p {
-            font-size: 1.1rem;
-            color: #c7c7c7;
+            font-size: 1.2rem;
+            color: #dcdcdc;
         }
         .game-image {
             width: 100%;
             max-width: 600px;
             border-radius: 15px;
             margin: 15px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
         .download-btn {
             display: inline-block;
-            background-color: #ffea00;
+            background: linear-gradient(90deg, #ffea00, #ffe066);
             color: #000;
-            padding: 15px 30px;
-            border-radius: 10px;
+            padding: 15px 40px;
+            border-radius: 15px;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
             margin-top: 20px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .download-btn:hover {
-            background-color: #ffe066;
-            transform: scale(1.05);
+            background: #ffe066;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+        }
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        .tab {
+            background-color: #1c1c3a;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .tab:hover {
+            background-color: #0078ff;
+            transform: translateY(-5px);
+        }
+        .tab.active {
+            background-color: #ffea00;
+            color: #000;
+        }
+        .tab-content {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
         }
         footer {
             background-color: #1c0048;
             color: #d4d4d4;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            font-size: 1rem;
+            padding: 30px 0;
+            font-size: 1.1rem;
         }
         footer a {
             color: #ffea00;
@@ -87,6 +122,14 @@
         }
         footer a:hover {
             text-decoration: underline;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -108,32 +151,27 @@
         </section>
 
         <section class="section">
-            <h2>Gameplay Highlights</h2>
-            <p>
-                - Jump over enemies to avoid danger.<br>
-                - Navigate through exciting levels.<br>
-                - Reach the end goal with intuitive and simple controls.<br>
-                - Enjoy dynamic environments and vibrant visuals.<br>
-            </p>
-        </section>
-
-        <section class="section">
-            <h2>Controls</h2>
-            <p>
-                **Laptop/PC**:<br>
-                - **Up Arrow**: Jump<br>
-                - **Left Arrow**: Move Left<br>
-                - **Right Arrow**: Move Right<br>
-                - **Down Arrow**: Use ladders<br>
-            </p>
-            <p>
-                **Android**:<br>
-                - **Up Button**: Jump<br>
-                - **Left Button**: Move Left<br>
-                - **Right Button**: Move Right<br>
-                - **Key Button**: Unlock doors when standing in front of them<br>
-            </p>
-            <p>Use these controls to conquer levels and have endless fun!</p>
+            <h2>Gameplay Controls</h2>
+            <div class="tab-container">
+                <div class="tab active" onclick="openTab(event, 'laptop')">Laptop/PC</div>
+                <div class="tab" onclick="openTab(event, 'android')">Android</div>
+            </div>
+            <div id="laptop" class="tab-content active">
+                <p>
+                    - **Up Arrow**: Jump<br>
+                    - **Left Arrow**: Move Left<br>
+                    - **Right Arrow**: Move Right<br>
+                    - **Down Arrow**: Use ladders<br>
+                </p>
+            </div>
+            <div id="android" class="tab-content">
+                <p>
+                    - **Up Button**: Jump<br>
+                    - **Left Button**: Move Left<br>
+                    - **Right Button**: Move Right<br>
+                    - **Key Button**: Unlock doors when standing in front of them<br>
+                </p>
+            </div>
         </section>
 
         <section class="section">
@@ -162,5 +200,23 @@
         <p>&copy; 2025 Alien Adventure. All rights reserved.</p>
         <p>Follow us on <a href="#" style="color: #ffea00;">Twitter</a> and <a href="#" style="color: #ffea00;">Instagram</a>!</p>
     </footer>
+
+    <script>
+        function openTab(event, tabID) {
+            // Remove active class from all tabs
+            let tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all tab contents
+            let contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Add active class to corresponding tab content
+            document.getElementById(tabID).classList.add('active');
+        }
+    </script>
 </body>
 </html>
