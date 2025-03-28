@@ -5,96 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alien Adventure | Explore the Universe!</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        /* Global Styling */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
             background-color: #0e032b;
             color: #ffffff;
+            line-height: 1.6;
         }
+        a {
+            text-decoration: none;
+        }
+
+        /* Header Styling */
         header {
-            background: linear-gradient(90deg, #00c6ff, #0078ff);
+            background: linear-gradient(to right, #0078ff, #00c6ff);
+            padding: 20px 0;
             text-align: center;
-            padding: 30px 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
         header img {
-            max-width: 180px;
+            max-width: 120px;
             margin-bottom: 15px;
         }
         header h1 {
-            margin: 0;
-            font-size: 4rem;
-            color: #ffea00;
-            text-shadow: 3px 3px 6px #000;
+            color: #ffffff;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 4px 6px #000000;
         }
         header p {
-            font-size: 1.3rem;
-            margin-top: 10px;
             color: #d4d4ff;
+            font-size: 1.2rem;
         }
+
+        /* Main Container */
         .container {
             max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
+
+        /* Section Styling */
         .section {
-            text-align: center;
             margin-bottom: 50px;
         }
         .section h2 {
-            font-size: 2.8rem;
+            text-align: center;
+            font-size: 2.5rem;
             color: #ffea00;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px #000;
         }
         .section p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #dcdcdc;
+            text-align: center;
+            margin-bottom: 20px;
         }
+
+        /* Image Styling */
         .game-image {
+            display: block;
             width: 100%;
             max-width: 600px;
-            border-radius: 15px;
             margin: 15px auto;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
         }
-        .download-btn {
-            display: inline-block;
-            background: linear-gradient(90deg, #ffea00, #ffe066);
-            color: #000;
-            padding: 15px 40px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .download-btn:hover {
-            background: #ffe066;
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
-        }
+
+        /* Tabs for Controls */
         .tab-container {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
+            margin: 30px 0;
             gap: 10px;
         }
         .tab {
             background-color: #1c1c3a;
             color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 15px;
+            padding: 10px 30px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .tab:hover {
             background-color: #0078ff;
-            transform: translateY(-5px);
+            transform: scale(1.1);
         }
         .tab.active {
             background-color: #ffea00;
@@ -103,33 +107,51 @@
         .tab-content {
             display: none;
             text-align: left;
-            margin-top: 20px;
-            animation: fadeIn 0.5s;
+            margin: 20px auto;
+            background-color: #1c1c3a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            max-width: 600px;
         }
         .tab-content.active {
             display: block;
         }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ffea00, #ffd700);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px auto;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .download-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Footer Styling */
         footer {
-            background-color: #1c0048;
+            background: #1c0048;
             color: #d4d4d4;
             text-align: center;
-            padding: 30px 0;
-            font-size: 1.1rem;
+            padding: 20px 0;
+            margin-top: 50px;
         }
         footer a {
             color: #ffea00;
             text-decoration: none;
+            font-weight: bold;
         }
         footer a:hover {
             text-decoration: underline;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
     </style>
 </head>
@@ -143,11 +165,9 @@
     <div class="container">
         <section class="section">
             <h2>About the Game</h2>
-            <p>
-                Alien Adventure is a fast-paced, action-packed game where you control a green player who leaps over enemies to reach the end of each level or a door. With simple yet addictive gameplay mechanics, Alien Adventure provides endless fun for players of all skill levels!
-            </p>
-            <img src="https://img.itch.zone/aW1hZ2UvMjgwOTcwNy8xNjc5ODg2Mi5qcGc=/original/dkwZuw.jpg" alt="Alien Adventure Screenshot 1" class="game-image">
-            <img src="https://img.itch.zone/aW1hZ2UvMjgwOTcwNy8xNjc5ODg2MC5qcGc=/original/Cx4iz0.jpg" alt="Alien Adventure Screenshot 2" class="game-image">
+            <p>Alien Adventure is an action-packed game where you guide a green player past enemies and navigate thrilling levels. Easy to play but hard to master!</p>
+            <img src="https://img.itch.zone/aW1hZ2UvMjgwOTcwNy8xNjc5ODg2Mi5qcGc=/original/dkwZuw.jpg" alt="Alien Adventure Gameplay Screenshot" class="game-image">
+            <img src="https://img.itch.zone/aW1hZ2UvMjgwOTcwNy8xNjc5ODg2MC5qcGc=/original/Cx4iz0.jpg" alt="Alien Adventure Second Screenshot" class="game-image">
         </section>
 
         <section class="section">
@@ -157,64 +177,36 @@
                 <div class="tab" onclick="openTab(event, 'android')">Android</div>
             </div>
             <div id="laptop" class="tab-content active">
-                <p>
-                    - **Up Arrow**: Jump<br>
-                    - **Left Arrow**: Move Left<br>
-                    - **Right Arrow**: Move Right<br>
-                    - **Down Arrow**: Use ladders<br>
-                </p>
+                <p>- <strong>Up Arrow:</strong> Jump<br>
+                   - <strong>Left Arrow:</strong> Move Left<br>
+                   - <strong>Right Arrow:</strong> Move Right<br>
+                   - <strong>Down Arrow:</strong> Descend ladders<br></p>
             </div>
             <div id="android" class="tab-content">
-                <p>
-                    - **Up Button**: Jump<br>
-                    - **Left Button**: Move Left<br>
-                    - **Right Button**: Move Right<br>
-                    - **Key Button**: Unlock doors when standing in front of them<br>
-                </p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>What Players Are Saying</h2>
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p>"This game is a masterpiece! The graphics and challenges kept me hooked for hours." - Jane D.</p>
-                </div>
-                <div class="testimonial">
-                    <p>"Alien Adventure is unlike anything I've played before. Highly recommend it!" - Mike R.</p>
-                </div>
-                <div class="testimonial">
-                    <p>"A thrilling experience that every gamer should try. The gameplay is exceptional." - Sarah L.</p>
-                </div>
+                <p>- <strong>Up Button:</strong> Jump<br>
+                   - <strong>Left Button:</strong> Move Left<br>
+                   - <strong>Right Button:</strong> Move Right<br>
+                   - <strong>Key Button:</strong> Unlock doors when near</p>
             </div>
         </section>
 
         <section class="section">
             <h2>Download & Play</h2>
-            <p>Start your adventure now by visiting the game’s page on itch.io!</p>
             <a href="https://umbs-games.itch.io/alien-platformer" class="download-btn">Play on itch.io</a>
         </section>
     </div>
 
     <footer>
         <p>&copy; 2025 Alien Adventure. All rights reserved.</p>
-        <p>Follow us on <a href="#" style="color: #ffea00;">Twitter</a> and <a href="#" style="color: #ffea00;">Instagram</a>!</p>
+        <p>Follow us on <a href="#">Twitter</a> and <a href="#">Instagram</a></p>
     </footer>
 
     <script>
         function openTab(event, tabID) {
-            // Remove active class from all tabs
-            let tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            // Remove active class from all tab contents
-            let contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Add active class to clicked tab
+            // Switch Tab States
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             event.target.classList.add('active');
-
-            // Add active class to corresponding tab content
             document.getElementById(tabID).classList.add('active');
         }
     </script>
