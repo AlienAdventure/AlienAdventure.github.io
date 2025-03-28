@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alien Adventure | Explore the Universe!</title>
+    <title>Alien Adventure: Galactic Odyssey</title>
     <style>
         /* Global Styling */
         * {
@@ -21,27 +21,31 @@
             text-decoration: none;
         }
 
-        /* Header Styling */
+        /* Enhanced Header Styling */
         header {
-            background: linear-gradient(to right, #0078ff, #00c6ff);
-            padding: 20px 0;
+            background: linear-gradient(to right, #1c0048, #5200cc);
+            padding: 30px 0;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            position: relative;
         }
         header img {
-            max-width: 120px;
+            max-width: 140px;
             margin-bottom: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
         }
         header h1 {
-            color: #ffffff;
-            font-size: 3.5rem;
+            color: #ffea00;
+            font-size: 4rem;
             font-weight: bold;
             margin-bottom: 10px;
-            text-shadow: 2px 4px 6px #000000;
+            text-shadow: 3px 5px 10px #000000;
         }
         header p {
             color: #d4d4ff;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            margin-top: 10px;
         }
 
         /* Main Container */
@@ -69,72 +73,39 @@
             margin-bottom: 20px;
         }
 
-        /* Image Styling */
-        .game-image {
-            display: block;
-            width: 100%;
-            max-width: 600px;
-            margin: 15px auto;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Tabs for Controls */
-        .tab-container {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-            gap: 10px;
-        }
-        .tab {
-            background-color: #1c1c3a;
-            color: #ffffff;
-            padding: 10px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
+        /* LootLabs & Download Styling */
+        .lootlabs-download {
             text-align: center;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .tab:hover {
-            background-color: #0078ff;
-            transform: scale(1.1);
-        }
-        .tab.active {
-            background-color: #ffea00;
-            color: #000;
-        }
-        .tab-content {
-            display: none;
-            text-align: left;
-            margin: 20px auto;
-            background-color: #1c1c3a;
+            background: #1c1c3a;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-            max-width: 600px;
+            margin: 20px auto;
+            max-width: 800px;
         }
-        .tab-content.active {
-            display: block;
+        .lootlabs-download h3 {
+            font-size: 1.5rem;
+            color: #ffea00;
+            margin-bottom: 10px;
         }
-
-        /* Download Button */
-        .download-btn {
-            display: inline-block;
+        .lootlabs-download p {
+            color: #dcdcdc;
+            font-size: 1.1rem;
+        }
+        .download-button {
             background: linear-gradient(to right, #ffea00, #ffd700);
             color: #000;
-            padding: 15px 40px;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
             border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 20px auto;
-            text-align: center;
+            cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
         }
-        .download-btn:hover {
+        .download-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
         }
 
         /* Footer Styling */
@@ -157,58 +128,28 @@
 </head>
 <body>
     <header>
-        <img src="https://img.itch.zone/aW1nLzE2Nzk4ODU5LmpwZw==/315x250%23c/3t%2BYaE.jpg" alt="Alien Adventure Logo">
-        <h1>Alien Adventure</h1>
-        <p>Embark on an intergalactic journey as a green player, leaping past enemies to complete thrilling levels!</p>
+        <img src="https://img.itch.zone/aW1nLzE2Nzk4ODU5LmpwZw==/315x250%23c/3t%2BYaE.jpg" alt="Alien Adventure Icon">
+        <h1>Alien Adventure: Galactic Odyssey</h1>
+        <p>Embark on an epic journey across the galaxy, navigating challenges and discovering cosmic secrets!</p>
     </header>
 
     <div class="container">
         <section class="section">
             <h2>About the Game</h2>
-            <p>Alien Adventure is an action-packed game where you guide a green player past enemies and navigate thrilling levels. Easy to play but hard to master!</p>
+            <p>Alien Adventure: Galactic Odyssey is an action-packed experience where you guide your alien hero through thrilling adventures and cosmic landscapes.</p>
             <img src="https://img.itch.zone/aW1hZ2UvMjgwOTcwNy8xNjc5ODg2Mi5qcGc=/original/dkwZuw.jpg" alt="Alien Adventure Gameplay Screenshot" class="game-image">
-            <img src="https://img.itch.zone/aW1hZ2UvMjgwOTcwNy8xNjc5ODg2MC5qcGc=/original/Cx4iz0.jpg" alt="Alien Adventure Second Screenshot" class="game-image">
         </section>
 
-        <section class="section">
-            <h2>Gameplay Controls</h2>
-            <div class="tab-container">
-                <div class="tab active" onclick="openTab(event, 'laptop')">Laptop/PC</div>
-                <div class="tab" onclick="openTab(event, 'android')">Android</div>
-            </div>
-            <div id="laptop" class="tab-content active">
-                <p>- <strong>Up Arrow:</strong> Jump<br>
-                   - <strong>Left Arrow:</strong> Move Left<br>
-                   - <strong>Right Arrow:</strong> Move Right<br>
-                   - <strong>Down Arrow:</strong> Descend ladders<br></p>
-            </div>
-            <div id="android" class="tab-content">
-                <p>- <strong>Up Button:</strong> Jump<br>
-                   - <strong>Left Button:</strong> Move Left<br>
-                   - <strong>Right Button:</strong> Move Right<br>
-                   - <strong>Key Button:</strong> Unlock doors when near</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Download & Play</h2>
-            <a href="https://umbs-games.itch.io/alien-platformer" class="download-btn">Play on itch.io</a>
+        <section class="section lootlabs-download">
+            <h3>Download the Game!</h3>
+            <p>Access the game via LootLabs and download it securely.</p>
+            <a href="https://lootdest.org/s?F3P1skZ8" target="_blank" class="download-button">Download Now</a>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 Alien Adventure. All rights reserved.</p>
+        <p>&copy; 2025 Alien Adventure: Galactic Odyssey. All rights reserved.</p>
         <p>Follow us on <a href="#">Twitter</a> and <a href="#">Instagram</a></p>
     </footer>
-
-    <script>
-        function openTab(event, tabID) {
-            // Switch Tab States
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById(tabID).classList.add('active');
-        }
-    </script>
 </body>
 </html>
