@@ -21,7 +21,7 @@
         <a href="#about" class="hover:text-indigo-300">About</a>
         <a href="#screens" class="hover:text-indigo-300">Screens</a>
         <a href="#download" class="hover:text-indigo-300">Download</a>
-        <a href="#privacy" class="hover:text-indigo-300">Privacy</a>
+        <a href="privacy.html" class="hover:text-indigo-300">Privacy</a>
       </nav>
     </div>
   </header>
@@ -49,7 +49,6 @@
           </div>
         </div>
         <div class="rounded-3xl overflow-hidden ring-1 ring-slate-800/60">
-          <!-- Hero image from original site -->
           <img src="screenshot1.png" alt="Gameplay screenshot" class="w-full h-auto" />
         </div>
       </div>
@@ -61,8 +60,8 @@
     <div class="max-w-6xl mx-auto px-4 py-14">
       <h2 class="text-2xl md:text-3xl font-bold">About the Game</h2>
       <p class="mt-4 text-slate-300 max-w-3xl">
-        Alien Adventure: Galactic Odyssey is a thrilling game in development, featuring seven levels and a bonus level.
-        Crisp controls, challenging obstacles, and mysterious doors await as you journey through space!
+        Alien Adventure: Galactic Odyssey is a thrilling platformer game with challenging levels, checkpoints, and mysterious doors.
+        It’s built for everyone to enjoy, whether you’re a casual player or love tough challenges!
       </p>
     </div>
   </section>
@@ -98,56 +97,12 @@
     </div>
   </section>
 
-  <!-- Privacy Policy -->
-  <section id="privacy" class="border-t border-slate-800">
-    <div class="max-w-3xl mx-auto px-4 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold">Privacy Policy</h2>
-      <p class="text-slate-400 mt-1">Last updated: <span id="last-updated"></span></p>
-
-      <div class="mt-8 space-y-6 text-slate-200 leading-relaxed">
-        <p>
-          This Privacy Policy describes how <strong>Alien Adventure: Galactic Odyssey</strong> (“the Game”) handles information.
-          We designed the Game to be enjoyed without collecting personal data.
-        </p>
-
-        <h3 class="text-xl font-bold">1. What We Collect</h3>
-        <ul class="list-disc list-inside space-y-1 text-slate-300">
-          <li>No personal information is required to play.</li>
-          <li>Basic device/usage data (like IP, browser type) may be logged by GitHub Pages for hosting/security.</li>
-        </ul>
-
-        <h3 class="text-xl font-bold">2. How We Use Information</h3>
-        <ul class="list-disc list-inside space-y-1 text-slate-300">
-          <li>Operate and improve the website and the Game.</li>
-          <li>Protect against abuse and troubleshoot issues.</li>
-        </ul>
-
-        <h3 class="text-xl font-bold">3. Ads, Analytics, and Third Parties</h3>
-        <p class="text-slate-300">
-          We do <strong>not</strong> use lootdesk/lootlabs or any ad-wall services.
-          No analytics scripts are embedded. Only minimal server logs may be collected by the host.
-        </p>
-
-        <h3 class="text-xl font-bold">4. Children’s Privacy</h3>
-        <p class="text-slate-300">The Game is not directed to children under 13.</p>
-
-        <h3 class="text-xl font-bold">5. Data Retention</h3>
-        <p class="text-slate-300">We do not store personal data. Hosting logs follow GitHub policies.</p>
-
-        <h3 class="text-xl font-bold">6. Contact</h3>
-        <p class="text-slate-300">
-          Questions? Email: <a href="mailto:umarmustaphanbg@gmail.com" class="text-indigo-300 underline">umarmustaphanbg@gmail.com</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-slate-400">&copy; <span id="year"></span> Alien Adventure: Galactic Odyssey. All rights reserved.</p>
       <div class="flex items-center gap-5 text-sm">
-        <a href="#privacy" class="hover:text-indigo-300">Privacy Policy</a>
+        <a href="privacy.html" class="hover:text-indigo-300">Privacy Policy</a>
         <a href="mailto:umarmustaphanbg@gmail.com" class="hover:text-indigo-300">Contact</a>
       </div>
     </div>
@@ -155,9 +110,7 @@
 
   <script>
     const now = new Date();
-    document.getElementById('last-updated').textContent =
-      now.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
     document.getElementById('year').textContent = now.getFullYear();
   </script>
 </body>
-          </html>
+      </html>
