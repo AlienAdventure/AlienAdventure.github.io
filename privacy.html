@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy - Alien Adventure: Galactic Odyssey</title>
+  <title>Privacy Policy - Alien Adventure</title>
+  <meta name="description" content="Privacy Policy for Alien Adventure: Galactic Odyssey" />
   <link rel="icon" href="icon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -20,82 +21,58 @@
         <a href="index.html#about" class="hover:text-indigo-300">About</a>
         <a href="index.html#screens" class="hover:text-indigo-300">Screens</a>
         <a href="index.html#download" class="hover:text-indigo-300">Download</a>
-        <a href="privacy.html" class="text-indigo-300 font-semibold">Privacy</a>
       </nav>
     </div>
   </header>
 
   <!-- Privacy Policy -->
-  <section id="privacy" class="border-t border-slate-800">
-    <div class="max-w-3xl mx-auto px-4 py-14">
-      <h1 class="text-3xl md:text-4xl font-bold">Privacy Policy</h1>
-      <p class="text-slate-400 mt-1">Last updated: <span id="last-updated"></span></p>
+  <main class="max-w-4xl mx-auto px-4 py-14">
+    <h1 class="text-3xl font-bold mb-6">Privacy Policy</h1>
 
-      <div class="mt-8 space-y-6 text-slate-200 leading-relaxed">
-        <p>
-          This Privacy Policy explains how <strong>Alien Adventure: Galactic Odyssey</strong> (“the Game”) handles information.
-        </p>
+    <p class="mb-4 text-slate-300">
+      Alien Adventure: Galactic Odyssey is committed to protecting your privacy. This policy explains how we handle information when you use our game.
+    </p>
 
-        <h2 class="text-xl font-bold">1. Ads</h2>
-        <p class="text-slate-300">
-          The Game uses <strong>Yodo1</strong> to serve advertisements. Yodo1 may collect certain non-personal
-          information such as device type, device identifiers, approximate location, and usage data in order
-          to provide relevant ads and improve ad performance. For more details, please review the official
-          <a href="https://www.yodo1.com/privacy" target="_blank" rel="noopener" class="text-indigo-300 underline">
-            Yodo1 Privacy Policy
-          </a>.
-        </p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">Advertising</h2>
+    <p class="mb-4 text-slate-300">
+      Our game uses third-party advertising through <strong>Yodo1</strong>. Ads may be shown during gameplay. These ads help keep the game free for everyone.
+    </p>
 
-        <h2 class="text-xl font-bold">2. Data Collection</h2>
-        <p class="text-slate-300">
-          We do not collect, store, or share any personal information such as your name, email, or contact details.
-          Any data collected through ads is handled by Yodo1 only and used strictly for advertising purposes.
-        </p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">Data Collection</h2>
+    <p class="mb-4 text-slate-300">
+      We do not collect personally identifiable information. Ad partners may collect limited, non-personal data (such as device type or general location) to improve ad relevance.
+    </p>
 
-        <h2 class="text-xl font-bold">3. Data Sharing</h2>
-        <p class="text-slate-300">
-          We do not sell or share your personal data with third parties. Advertisements are managed solely
-          through Yodo1’s ad network and its partners.
-        </p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">Children</h2>
+    <p class="mb-4 text-slate-300">
+      Alien Adventure is designed for everyone. We comply with child-friendly policies. Ads shown are filtered to be appropriate for all ages.
+    </p>
 
-        <h2 class="text-xl font-bold">4. Children’s Privacy</h2>
-        <p class="text-slate-300">
-          The Game is designed to be enjoyed by <strong>everyone, including children</strong>.  
-          We comply with Google Play’s Families Policy, COPPA, and GDPR-K standards. Ads shown in the game
-          are designed to be family-appropriate.
-        </p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">Your Choices</h2>
+    <p class="mb-4 text-slate-300">
+      You can opt out of personalized advertising by adjusting your device settings. See your device’s privacy or ads section for more details.
+    </p>
 
-        <h2 class="text-xl font-bold">5. Changes to This Policy</h2>
-        <p class="text-slate-300">
-          We may update this Privacy Policy from time to time. Any updates will be posted here with a new
-          “Last updated” date.
-        </p>
-
-        <h2 class="text-xl font-bold">6. Contact</h2>
-        <p class="text-slate-300">
-          If you have any questions about this Privacy Policy, please contact us at:  
-          <a href="mailto:umarmustaphanbg@gmail.com" class="text-indigo-300 underline">umarmustaphanbg@gmail.com</a>
-        </p>
-      </div>
-    </div>
-  </section>
+    <h2 class="text-xl font-semibold mt-8 mb-2">Contact Us</h2>
+    <p class="mb-4 text-slate-300">
+      If you have any questions about this Privacy Policy, you can contact us at:
+      <a href="mailto:umarmustaphanbg@gmail.com" class="text-indigo-300 hover:underline">
+        umarmustaphanbg@gmail.com
+      </a>
+    </p>
+  </main>
 
   <!-- Footer -->
   <footer class="border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-slate-400">&copy; <span id="year"></span> Alien Adventure: Galactic Odyssey. All rights reserved.</p>
-      <div class="flex items-center gap-5 text-sm">
-        <a href="privacy.html" class="hover:text-indigo-300">Privacy Policy</a>
-        <a href="mailto:umarmustaphanbg@gmail.com" class="hover:text-indigo-300">Contact</a>
-      </div>
+      <a href="index.html" class="hover:text-indigo-300">← Back to Home</a>
     </div>
   </footer>
 
   <script>
     const now = new Date();
-    document.getElementById('last-updated').textContent =
-      now.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
     document.getElementById('year').textContent = now.getFullYear();
   </script>
 </body>
-</html>
+  </html>
